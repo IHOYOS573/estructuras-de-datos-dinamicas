@@ -1,0 +1,5 @@
+import sys 
+
+max_float = sys.float_info.max
+resultado = 2 * max_float
+print(resultado)
