@@ -1,0 +1,63 @@
+using System;
+
+namespace MultiplicacionMatrices
+{
+    class Programa
+    {
+        static int[][] MultiplicarMatrices(int[][] M1, int[][] M2)
+        {
+            if (M1[0].Length == M2.Length)
+            {
+                int[][] M3 = new int[M1.Length][];
+                for (int i = 0; i < M1.Length; i++)
+                {
+                    M3[i] = new int[M2[0].Length];
+                    for (int j = 0; j < M2[0].Length; j++)
+                    {
+                        M3[i][j] = MultiplicarRecursivo(M1, M2, i, j, 0);
+                    }
+                }
+                return M3;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        static int MultiplicarRecursivo(int[][] M1, int[][] M2, int fila, int col, int indice)
+        {
+            if (indice >= M1[0].Length)
+            {
+                return 0;
+            }
+
+            return M1[fila][indice] * M2[indice][col] + MultiplicarRecursivo(M1, M2, fila, col, indice + 1);
+        }
+
+        static void Main(string[] args)
+        {
+            int[][] a = new int[][] { new int[] { 8, 4, -6 }, new int[] { 2, 7, 4 } };
+            int[][] b = new int[][] { new int[] { 1, 1 }, new int[] { 1, 1 }, new int[] { -1, 1 } };
+
+            int[][] c = MultiplicarMatrices(a, b);
+
+            if (c == null)
+            {
+                Console.WriteLine("No es posible multiplicar las matrices.");
+            }
+            else
+            {
+                foreach (int[] fila in c)
+                {
+                    Console.Write("[");
+                    foreach (int elemento in fila)
+                    {
+                        Console.Write(elemento + " ");
+                    }
+                    Console.WriteLine("]");
+                }
+            }
+        }
+    }
+}
