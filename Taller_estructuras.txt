@@ -1,0 +1,95 @@
+Función contar_multiplos_recursivo(numero, contador)
+    Si numero == 0 Entonces
+        Devolver contador
+    Sino
+        ultimo_digito = numero MOD 10
+        Si ultimo_digito MOD 2 == 0 y ultimo_digito MOD 4 == 0 Entonces
+            contador += 1
+        Fin Si
+        Devolver contar_multiplos_recursivo(numero DIV 10, contador)
+    Fin Si
+Fin Función
+
+
+numero_inicial = 3000
+resultado = contar_multiplos_recursivo(numero_inicial, 0)
+Imprimir "Cantidad de dígitos que son múltiplos de 2 y 4:", resultado
+
+
+
+
+Función suma_impares_matriz(matriz):
+    suma = 0
+    Para cada fila en matriz:
+        Para cada numero en fila:
+            Si numero % 2 != 0:
+                suma = suma + numero
+    Devolver suma
+
+
+# Ejemplo de uso
+matriz_ejemplo = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+
+resultado = suma_impares_matriz(matriz_ejemplo)
+Imprimir "La suma de los números impares en la matriz es:", resultado
+
+
+
+
+
+Función invertir_string(input_str)
+    longitud = LongitudDeCadena(input_str)
+    punto_medio = longitud DIV 2
+    primera_mitad = Subcadena(input_str, 0, punto_medio)
+    segunda_mitad = Subcadena(input_str, punto_medio, longitud - punto_medio)  # Corrección aquí
+    segunda_mitad_invertida = InvertirCadena(segunda_mitad)
+    cadena_invertida = ConcatenarCadenas(primera_mitad, segunda_mitad_invertida)
+    Devolver cadena_invertida
+
+cadena_original = "hola mundo"
+cadena_invertida = invertir_string(cadena_original)
+Escribir cadena_invertida  # Salida: "hola odnum"
+
+
+
+def search_element_at_index(lst, index, element):
+    # Caso base: Si la lista está vacía y aún no hemos encontrado el elemento, retornamos False
+    if not lst:
+        return False
+
+    # Caso base: Si llegamos al índice deseado y el elemento coincide, retornamos True
+    if index == 0 and lst[0] == element:
+        return True
+
+    # Llamada recursiva con la cola de la lista y el índice ajustado
+    return search_element_at_index(lst[1:], index - 1, element)
+
+# Ejemplo de uso
+my_list = [1, 2, 3, 4, 5]
+target_element = 3
+target_index = 2
+result = search_element_at_index(my_list, target_index, target_element)
+if result:
+    print(f"El elemento {target_element} está en el índice {target_index}.")
+else:
+    print(f"El elemento {target_element} no está en el índice {target_index}.")
+
+
+
+Función ImprimirNumerosRecursiva(cadena):
+    Si longitud de cadena == 0:
+        Retornar
+    
+    Si primer caracter de cadena es un dígito:
+        Imprimir primer caracter
+    
+    Llamar a ImprimirNumerosRecursiva(subcadena desde el segundo caracter)
+
+# Llamada inicial a la función
+cadena = "abc123def456"
+ImprimirNumerosRecursiva(cadena)
