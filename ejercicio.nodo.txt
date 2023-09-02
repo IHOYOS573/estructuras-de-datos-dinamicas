@@ -1,0 +1,12 @@
+def nodo_a_lista(nodo_lista, nodo_vi):
+    if (nodo_lista == null):
+        nodo_vi.siguiente = null
+        return nodo_vi
+
+    if (nodo_vi.valor <= nodo_lista.valor):
+        nodo_lista.siguiente = nodo_a_lista(nodo_lista.siguiente, nodo_vi)
+        return nodo_lista
+
+    if (nodo_vi.valor > nodo_lista.valor):
+        nodo_vi.siguiente = nodo_lista
+        return nodo_vi
